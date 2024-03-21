@@ -1,0 +1,52 @@
+name: 'SemVer Action'
+description: 'A GitHub Action for using a JSON file as the persistence for your Semantic Version number for your repository'
+inputs:
+  path:
+    description: 'The path to the semver JSON file'
+    required: false
+    default: 'semver.json'
+  major-version:
+    description: 'The major version number'
+    required: false
+    default: '0'
+  minor-version:
+    description: 'The minor version number'
+    required: false
+    default: '0'
+  patch-version:
+    description: 'The patch version number'
+    required: false
+    default: '0'
+  build-version:
+    description: 'The build version number'
+    required: false
+    default: '0'
+outputs:
+  major:
+    description: 'The major version number'
+  minor:
+    description: 'The minor version number'
+  patch:
+    description: 'The patch version number'
+  build:
+    description: 'The build version number'
+  version:
+    description: 'The full version number'
+runs:
+  using: 'docker'
+  image: 'src/SemVer.Json/Dockerfile'
+  args:
+    - ${{ (inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && 'read' || 'write' }}
+    - '-p'
+    - '/github/workspace/${{ inputs.path }}'
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && '-m' || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && inputs.major-version || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && '-n' || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && inputs.minor-version || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && '-h' || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && inputs.patch-version || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && '-b' || '' }}
+    - ${{ !(inputs.major-version == '0' && inputs.minor-version == '0' && inputs.patch-version == '0' && inputs.build-version == '0') && inputs.build-version || '' }}
+branding: 
+    icon: 'grid'
+    color: 'green'

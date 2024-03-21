@@ -12,11 +12,13 @@ using var scope = host.Services.CreateScope();
 var services = scope.ServiceProvider;
 try
 {
-    services.GetRequiredService<App>().Run(args);
+    var exit = services.GetRequiredService<App>().Run(args);
+    Environment.Exit(exit);
 }
 catch (Exception e)
 {
     Console.WriteLine(e.Message);
+    Environment.Exit(1);
 }
 
 return;
