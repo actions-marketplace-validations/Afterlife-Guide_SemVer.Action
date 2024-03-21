@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		.gitmessage = .gitmessage
 		CONTRIBUTING.md = CONTRIBUTING.md
+		.cm\gitstream.cm = .cm\gitstream.cm
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemVer.Json", "src\SemVer.Json\SemVer.Json.csproj", "{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389}"
