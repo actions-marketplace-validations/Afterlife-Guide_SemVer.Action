@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FF63065C-83A2-4267-BBD7-3CE3E8F9D247}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FAD24DB5-E310-4675-9234-62A77C15D0FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74006CDD-CD53-4AEA-88EF-7E83BB20667F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+		.gitmessage = .gitmessage
+		CONTRIBUTING.md = CONTRIBUTING.md
+		.cm\gitstream.cm = .cm\gitstream.cm
+		LICENSE.txt = LICENSE.txt
+		build.cake = build.cake
+		CHANGELOG.md = CHANGELOG.md
+		semver.json = semver.json
+		.editorconfig = .editorconfig
+		.dockerignore = .dockerignore
+		src\SemVer.Json\Dockerfile = src\SemVer.Json\Dockerfile
+		action.yml = action.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemVer.Json", "src\SemVer.Json\SemVer.Json.csproj", "{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemVer.Json.UnitTests", "test\SemVer.Json.UnitTests\SemVer.Json.UnitTests.csproj", "{DE1FAEAE-0E49-4C48-865F-90C44BF9CF67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389} = {FF63065C-83A2-4267-BBD7-3CE3E8F9D247}
+		{DE1FAEAE-0E49-4C48-865F-90C44BF9CF67} = {FAD24DB5-E310-4675-9234-62A77C15D0FE}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA1B9C2-0F3D-4BE3-99D4-628CCE9E4389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1FAEAE-0E49-4C48-865F-90C44BF9CF67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1FAEAE-0E49-4C48-865F-90C44BF9CF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1FAEAE-0E49-4C48-865F-90C44BF9CF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1FAEAE-0E49-4C48-865F-90C44BF9CF67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
