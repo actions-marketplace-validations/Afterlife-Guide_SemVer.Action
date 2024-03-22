@@ -1,4 +1,5 @@
-﻿using SemVer.Json.Features.WriteJsonFile;
+﻿using Microsoft.Extensions.Logging;
+using SemVer.Json.Features.WriteJsonFile;
 using SemVer.Json.Persistence;
 
 namespace SemVer.Json.UnitTests.Features.WriteJsonFile;
@@ -6,11 +7,12 @@ namespace SemVer.Json.UnitTests.Features.WriteJsonFile;
 public class WriteJsonCommandTests
 {
     private readonly IFileWriter _mockFileWriter = Substitute.For<IFileWriter>();
+    private readonly ILogger<WriteJsonCommand> _mockLogger = Substitute.For<ILogger<WriteJsonCommand>>();
     private readonly WriteJsonCommand _sut;
 
     public WriteJsonCommandTests()
     {
-        _sut = new WriteJsonCommand(_mockFileWriter);
+        _sut = new WriteJsonCommand(_mockFileWriter, _mockLogger);
     }
 
     [Fact]

@@ -1,23 +1,20 @@
 ﻿using System.Text.Json;
+using Microsoft.Extensions.Logging;
 using SemVer.Json.Persistence;
 
 namespace SemVer.Json.Features.WriteJsonFile;
 
-public class WriteJsonCommand
+public class WriteJsonCommand(IFileWriter fileWriter, ILogger<WriteJsonCommand> logger)
 {
-    private readonly IFileWriter _fileWriter;
     private readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
 
-    public WriteJsonCommand(IFileWriter fileWriter)
-    {
-        _fileWriter = fileWriter;
-    }
-
     public int Write(WriteJsonOptions options)
     {
+        logger.LogInformation("Version Number to write: {Major}.{Minor}.{Patch}.{Build}", options.Major, options.Minor, options.Patch, options.Build);
+        
         var semVer = new SemVer
         {
             Major = options.Major,
@@ -26,7 +23,11 @@ public class WriteJsonCommand
             Build = options.Build
         };
         var json = JsonSerializer.Serialize(semVer, _jsonSerializerOptions);
-        _fileWriter.WriteJson(json, options.Path);
+        
+        logger.LogInformation("Json to write: {Json}", json);
+        logger.LogInformation("Writing to file: {Path}", options.Path);
+        
+        fileWriter.WriteJson(json, options.Path);
 
         return 0;
     }

@@ -16,9 +16,9 @@ public class App
         _writeJsonCommand = writeJsonCommand;
     }
 
-    public void Run(IEnumerable<string> args)
+    public int Run(IEnumerable<string> args)
     {
-        Parser.Default.ParseArguments<ReadJsonOptions, WriteJsonOptions>(args)
+        return Parser.Default.ParseArguments<ReadJsonOptions, WriteJsonOptions>(args)
             .MapResult(
                 (ReadJsonOptions opts) => _readJsonCommand.Read(opts),
                 (WriteJsonOptions opts) => _writeJsonCommand.Write(opts),

@@ -17,6 +17,8 @@ public class ReadJsonCommand(IOutputWriter outputWriter, ILogger<ReadJsonCommand
         try
         {
             json = File.ReadAllText(opts.Path);
+            logger.LogInformation("Read JSON file: {Path}", opts.Path);
+            logger.LogInformation("JSON content: {Json}", json);
         }
         catch (FileNotFoundException ex)
         {
