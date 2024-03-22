@@ -1,4 +1,4 @@
-name: 'SemVer Action'
+name: 'Semantic Versioning Action'
 description: 'A GitHub Action for using a JSON file as the persistence for your Semantic Version number for your repository'
 inputs:
   path:
