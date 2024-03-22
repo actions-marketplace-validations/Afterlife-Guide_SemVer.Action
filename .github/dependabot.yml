@@ -19,3 +19,10 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
+        
+  - package-ecosystem: "docker"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
