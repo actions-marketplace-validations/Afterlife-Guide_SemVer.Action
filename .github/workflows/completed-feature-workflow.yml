@@ -5,20 +5,28 @@ on:
     branches: [ develop ]
     types: [closed]
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   update-merged-issue-issues:
     if: github.event.pull_request.merged_by != '' && github.actor != 'dependabot[bot]' && startsWith(github.head_ref, 'feature/issue-')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
       - name: Extract Issue Number
         shell: bash
-        run: echo "##[set-output name=issue;]$(echo ${{ github.event.pull_request.head.ref }} | sed 's|[^0-9]||g')"
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: echo "issue=$(echo "$HEAD_REF" | sed 's|[^0-9]||g')" >> $GITHUB_OUTPUT
         id: extract_issue
       - name: Output Issue Number
-        run: echo "Issue Number- ${{ steps.extract_issue.outputs.issue }}"
+        env:
+          ISSUE_NUMBER: ${{ steps.extract_issue.outputs.issue }}
+        run: echo "Issue Number- $ISSUE_NUMBER"
       - name: Update Labels
-        run: gh issue edit ${{ steps.extract_issue.outputs.issue }} --add-label "next release" --remove-label "in progress"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ steps.extract_issue.outputs.issue }}
+        run: gh issue edit $ISSUE_NUMBER --add-label "status:next release" --remove-label "status:in progress"

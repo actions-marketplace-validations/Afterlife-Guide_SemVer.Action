@@ -6,6 +6,9 @@ on:
       - master
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   get-version:
     uses: ./.github/workflows/step-version.yml
@@ -19,18 +22,26 @@ jobs:
     with:
       version: ${{ needs.get-version.outputs.version }}
       checkout-ref: ${{ github.base_ref }}
+      
+  push-package:
+    needs: [get-version,build]
+    uses: ./.github/workflows/step-push-package.yml
+    secrets: inherit
+    with:
+      version: ${{ needs.get-version.outputs.version }}
+      checkout-ref: ${{ github.base_ref }}
   
   tag-release:
-    needs: [get-version,build]
+    needs: [get-version,push-package]
     uses: ./.github/workflows/step-tag-release.yml
     with:
       version: ${{ needs.get-version.outputs.version }}
   
   merge-master-to-develop:
-    needs: [build]
+    needs: [push-package]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
       - name: Create Pull Request
         env:
           GH_TOKEN: ${{ secrets.CREATE_PR_TOKEN }}
