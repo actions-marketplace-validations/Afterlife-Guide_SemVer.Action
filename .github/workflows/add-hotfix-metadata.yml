@@ -20,7 +20,7 @@ jobs:
     needs: [get-version]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ github.head_ref }}
       - name: Increment Version
@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "patch_version=$(($(cat semver.json | jq -r '.patch')+1))" > $GITHUB_OUTPUT
       - name: Store New Version
-        uses: Afterlife-Guide/SemVer.Action@650ef55c95f6be94af7d59fe34fcd1429d496462
+        uses: Afterlife-Guide/SemVer.Action@bcdf21cf90d32769f38fd17d52280baad006e8e3
         with:
           path: semver.json
           major-version: ${{ needs.get-version.outputs.major }}
@@ -36,7 +36,7 @@ jobs:
           patch-version: ${{ steps.increment_version.outputs.patch_version }}
           build-version: ${{ github.run_number }}
       - name: Update changelog
-        uses: baynezy/ChangeLogger.Action@5c3d26d530effb827c1222ad1abcabf37afdf408
+        uses: baynezy/ChangeLogger.Action@6e3ad430f08e13698bb01027a13ba4349b0143cc
         with:
           tag: ${{ needs.get-version.outputs.major }}.${{ needs.get-version.outputs.minor }}.${{ steps.increment_version.outputs.patch_version }}.${{ github.run_number }}
           

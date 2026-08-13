@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.10.26] - 2026-08-12
+
+## [1.3.9.25] - 2026-07-27
+
+## [1.3.8.24] - 2026-06-16
+
+## [1.3.7.23] - 2026-05-13
+
+## [1.3.6.22] - 2026-04-28
+
+## [1.3.5.21] - 2026-03-16
+
+## [1.3.4.20] - 2026-03-12
+
 ## [1.3.3.19] - 2026-02-12
 
 ## [1.3.2.18] - 2026-01-16
@@ -99,7 +113,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0.1] - 2024-03-22
 
-[unreleased]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.3.19...HEAD
+[unreleased]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.10.26...HEAD
+[1.3.10.26]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.9.25...1.3.10.26
+[1.3.9.25]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.8.24...1.3.9.25
+[1.3.8.24]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.7.23...1.3.8.24
+[1.3.7.23]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.6.22...1.3.7.23
+[1.3.6.22]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.5.21...1.3.6.22
+[1.3.5.21]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.4.20...1.3.5.21
+[1.3.4.20]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.3.19...1.3.4.20
 [1.3.3.19]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.2.18...1.3.3.19
 [1.3.2.18]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.1.17...1.3.2.18
 [1.3.1.17]: https://github.com/Afterlife-Guide/SemVer.Action/compare/1.3.0.15...1.3.1.17
